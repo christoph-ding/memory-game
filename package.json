@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "npm install; node server/server.js"
+  },
+  "engines": {
+    "node": "0.12.7",
+    "npm": "2.11.3"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "path": "^0.12.7"
+  }
+}
