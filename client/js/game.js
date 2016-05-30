@@ -16,6 +16,8 @@ var setUpGame = function() {
   var rows = 4;
 
   var tilesHTML = '';
+  var tilesDOM = document.createElement("div");
+  var wrapper = document.getElementById("game-wrapper");
 
   for (var i = 1; i <= columns * rows; i++) {
     tilesHTML += 
@@ -23,8 +25,9 @@ var setUpGame = function() {
       <h>' + i + '</h1>\
       </div>';
   }
-  
-  console.log(tilesHTML);
+
+  wrapper.innerHTML = tilesHTML;
+  console.log(wrapper);
 }
 
 
