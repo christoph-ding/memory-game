@@ -3,41 +3,28 @@ var tiles = [];
 var images = [];
 
 // tile constructor
-  /* tile has:
-    column
-    row
-    image
-    id
-    how are two tiles 'the same'
-  */
+var Tile = function(x, y) {
+  this.edge = 100;
+  this.horizon = x;
+  this.vertical = y;
+  // give the tile an image from images
+};
 
-  /* 'render' facedown
-    maybe this is ... just css ..
-    draw the card's style: 
-  */
+// render
+var setUpGame = function() {
+  var columns = 5;
+  var rows = 4;
 
-  /* 'render' faceup
+  var tilesHTML = '';
 
-  */
-
-// the game itself
-  /*
-    init?????
-      - render:
-        for each tile...
-          make the dom element
-          # USE A RECT
-
-      - set up game state:
-        shuffle the tiles
-        shuffle the images
-        for each tile...
-          give it an image          
-  */
-
-  /* functions we need to add to each tile
-    mouseClicking
-    
-  */
+  for (var i = 1; i <= columns * rows; i++) {
+    tilesHTML += 
+      '<div class ="' + i + '">\
+      <h>' + i + '</h1>\
+      </div>';
+  }
+  
+  console.log(tilesHTML);
+}
 
 
