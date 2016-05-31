@@ -3,31 +3,35 @@ var tiles = [];
 var images = [];
 
 // tile constructor
-var Tile = function(x, y) {
+var Tile = function(column, row) {
   this.edge = 100;
-  this.horizon = x;
-  this.vertical = y;
-  // give the tile an image from images
+  this.column = column;
+  this.row = row;
 };
 
 // render
-var setUpGame = function() {
-  var columns = 5;
-  var rows = 4;
+var startGame = function() {
 
   var tilesHTML = '';
   var tilesDOM = document.createElement("div");
   var wrapper = document.getElementById("game-wrapper");
 
-  for (var i = 1; i <= columns * rows; i++) {
-    tilesHTML += 
-      '<div class ="' + i + '">\
-      <h>' + i + '</h1>\
-      </div>';
+  for (var colIndex = 1; colIndex <= 5; colIndex++) {
+    for (var rowIndex = 1; rowIndex <= 4; rowIndex++) {
+      var currentTile = new Tile(colIndex, rowIndex);
+      console.log(currentTile);
+
+      var 
+
+      // tilesHTML += 
+      //   '<div class ="' + i + '">\
+      //   <h>' + i + '</h1>\
+      //   </div>';      
+    }
   }
 
-  wrapper.innerHTML = tilesHTML;
-  console.log(wrapper);
+  // wrapper.innerHTML = tilesHTML;
+  // console.log(wrapper);
 }
 
 
