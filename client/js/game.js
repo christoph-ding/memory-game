@@ -12,26 +12,25 @@ var Tile = function(column, row) {
 // render
 var startGame = function() {
 
-  var tilesHTML = '';
-  var tilesDOM = document.createElement("div");
-  var wrapper = document.getElementById("game-wrapper");
+  var board = document.getElementById("board");
 
   for (var colIndex = 1; colIndex <= 5; colIndex++) {
     for (var rowIndex = 1; rowIndex <= 4; rowIndex++) {
+
+      // define the current tile and its row, column
       var currentTile = new Tile(colIndex, rowIndex);
-      console.log(currentTile);
+      var tileClass = "tile " + rowIndex + " " + colIndex;
 
-      var 
+      // add tiles as individual dom elements
+      var tileDOM = document.createElement("div");
+      tileDOM.className = tileClass;
+      var tileHTML = '<h>' + rowIndex + ' , ' + colIndex + '</h1>';
+      tileDOM.innerHTML = tileHTML;
 
-      // tilesHTML += 
-      //   '<div class ="' + i + '">\
-      //   <h>' + i + '</h1>\
-      //   </div>';      
+      // adde it to the board
+      board.appendChild(tileDOM);
     }
   }
-
-  // wrapper.innerHTML = tilesHTML;
-  // console.log(wrapper);
 }
 
 
