@@ -1,5 +1,5 @@
 // all the tiles
-var tiles = [];
+var tiles = {};
 var images = [];
 
 // tile constructor
@@ -8,20 +8,30 @@ var Tile = function(column, row, id) {
   this.id = id;
   this.column = column;
   this.row = row;
-  this.showing = false;
-  this.HTML = '<h>' + this.row + ' , ' + this.column + '</h1>';
 
-  // art
-  this.backColor = "#F50E23";
-  this.frontColor = "#0072BC";
+  // DOM and styling
+  this.HTML = '<h>' + this.row + ' , ' + this.column + '</h1>';
+  this.backColor = "#0072BC";
+  this.faceup = "#F50E23"; 
+
+  // flipping
+  this.revealed = false;
 
   // functionality
-  this.onclick = function() {
-    var self = document.getElementById(this.id);
-    console.log(self.id);
+  this.flip = function() {
+    var tileDOM = document.getElementById(this.id);
+    var tileData = tiles[this.id];
+
+    // flip all over the place
+    if (tileData.revealed) {
+      tileDOM.style.background = tileData.backColor;
+    } else {
+      tileDOM.style.background = tileData.faceup;
+    }
+
+    tileData.revealed = !tileData.revealed;
+    
   };
-
-
 };
 
 // render
@@ -38,7 +48,7 @@ var startGame = function() {
       var currentTile = new Tile(colIndex, rowIndex, idCounter);
       var tileClass = "tile " + rowIndex + " " + colIndex;
       var tileID = idCounter;
-      tiles.push(tileClass);
+      tiles[tileID] = currentTile;
 
       // add tiles as individual dom elements
       var tileDOM = document.createElement("div");
@@ -46,8 +56,8 @@ var startGame = function() {
       tileDOM.className = tileClass;
       tileDOM.id = tileID;
       tileDOM.innerHTML = currentTile.HTML;      
-      tileDOM.style.background = currentTile.frontColor;
-      tileDOM.onclick = currentTile.onclick;
+      tileDOM.style.background = currentTile.backColor;
+      tileDOM.onclick = currentTile.flip;
 
       // add it to the board
       board.appendChild(tileDOM);
